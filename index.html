@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carelyst - Your Digital Health Partner</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    
+
+    <!-- CURSOR -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- ANATOMY SCAN LOADER -->
+    <div id="loader">
+        <div class="scanner-container">
+            <div class="scan-line"></div>
+            <img src="images/human-scan.png" class="human-figure" alt="Anatomy Scan">
+            <svg class="data-graph left" viewBox="0 0 100 400"><path class="graph-path" d="M 90 0 C 10 100, 10 300, 90 400" /></svg>
+            <svg class="data-graph right" viewBox="0 0 100 400"><path class="graph-path" d="M 10 0 C 90 100, 90 300, 10 400" /></svg>
+            <div class="data-points"></div>
+        </div>
+        <div class="loader-text-wrapper">
+            <div class="loader-text">ANALYZING HEALTH METRICS...</div>
+            <div class="loader-counter"><span id="load-percentage">0</span>%</div>
+        </div>
+    </div>
+    
+    <!-- HEADER -->
+    <header id="main-header">
+        <div class="container">
+            <!-- FIXED: Corrected logo path -->
+            <a href="#" class="logo-link"><img src="images/logo.svg.svg" alt="Carelyst Logo"><span>Carelyst</span></a>
+            <div class="header-controls">
+                <button class="btn btn-primary" id="auth-btn-header">Signup</button>
+                <button class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- FULL-SCREEN NAVIGATION -->
+    <nav id="full-screen-nav">
+        <button class="menu-close-btn">×</button>
+        <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pharmacies">Partners</a></li>
+            <li><a href="#specialists">Specialists</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- HERO SECTION -->
+       <section id="hero">
+            <canvas id="particle-canvas"></canvas>
+            <div class="container hero-content">
+                <h1 class="fade-in">Intelligent Health Guidance, Instantly.</h1>
+                <p class="fade-in-delay">Stop guessing. Start knowing.</p>
+                <div class="fade-in-delay-2">
+                    <button class="btn btn-cta" id="open-symptom-checker-btn-main">Check Symptoms Now</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- FEATURES SECTION -->
+        <section id="features" class="section-padding">
+             <div class="container">
+                <h2 class="section-title fade-in">A New Standard in Personal Healthcare</h2>
+                <div class="features-grid">
+                    <div class="feature-card fade-in">
+                        <img src="images/icon-symptoms.png" alt="Symptom Checker Icon">
+                        <h3>Guided Symptom Checker</h3>
+                        <p>Our step-by-step tool helps you identify potential issues with clarity and confidence.</p>
+                    </div>
+                    <div class="feature-card fade-in-delay">
+                        <img src="images/icon-specialist.png" alt="Find Specialists Icon">
+                        <h3>Find Top Specialists</h3>
+                        <p>Instantly connect with a curated list of trusted doctors based on your needs.</p>
+                    </div>
+                    <div class="feature-card fade-in-delay-2">
+                        <img src="images/icon-records.png" alt="Health Records Icon">
+                        <h3>Secure Health Records</h3>
+                        <p>Keep your medical history safe and accessible anytime, anywhere (coming soon).</p>
+                    </div>
+                     <div class="feature-card fade-in-delay-3">
+                        <img src="images/icon-pharmacy.png" alt="Pharmacy Connect Icon">
+                        <h3>Pharmacy Connect</h3>
+                        <p>Get prescriptions sent directly to trusted online pharmacies for fast delivery.</p>
+                    </div>
+                </div>
+            </div>
+        </section
+        <!-- MARQUEE SECTION -->
+        <section id="pharmacies" class="section-padding">
+            <div class="container">
+                <h2 class="section-title fade-in">Our Trusted Pharmacy Partners</h2>
+                <div class="marquee"><div class="marquee-content">
+                    <div class="pharmacy-logo"><img src="images/pharmacy1.png" alt="PharmEasy"></div>
+                    <div class="pharmacy-logo"><img src="images/pharmacy2.png" alt="Netmeds"></div>
+                </div></div>
+            </div>
+        </section>
+
+        <!-- SPECIALISTS SECTION -->
+        <section id="specialists" class="section-padding">
+            <div class="container">
+                <h2 class="section-title fade-in">Connect With Our Specialists</h2>
+                <div class="specialist-list-container">
+                    <ul id="specialist-list"></ul>
+                    <div id="specialist-image-preview"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <footer id="main-footer"><div class="container"><p>© 2024 Carelyst. All Rights Reserved.</p></div></footer>
+
+    <!-- MODALS SECTION -->
+    <div id="modal-overlay" class="hidden"></div>
+    
+    <!-- AUTH MODAL -->
+    <div id="auth-modal" class="modal-container hidden">
+        <div class="auth-card">
+            <div class="form-branding">
+                <div class="video-background-wrapper"><video playsinline autoplay muted loop><source src="videos/auth-video.mp4" type="video/mp4"></video></div>
+                <!-- FIXED: Corrected logo path -->
+                <div class="branding-content"><img src="images/logo.svg.svg" alt="Carelyst Logo"><h2>Welcome Back</h2><p>Login to access your health dashboard.</p></div>
+            </div>
+            <div class="form-content">
+                <button class="modal-close-btn">×</button>
+                <div id="login-view" class="form-view active">
+                    <h3>Login to Your Account</h3>
+                    <form id="login-form">
+                        <div class="form-group"><input type="email" id="login-email" required placeholder=" "><label for="login-email">Email Address</label></div>
+                        <div class="form-group"><input type="password" id="login-password" required placeholder=" "><label for="login-password">Password</label></div>
+                        <button type="submit" class="btn btn-cta">Login</button>
+                    </form>
+                    <p class="auth-switch">Don't have an account? <a href="#" id="show-signup">Sign up now</a></p>
+                </div>
+                <div id="signup-view" class="form-view">
+                    <h3>Create Your Account</h3>
+                    <form id="signup-form">
+                        <div class="form-group"><input type="text" id="signup-name" required placeholder=" "><label for="signup-name">Full Name</label></div>
+                        <div class="form-group"><input type="email" id="signup-email" required placeholder=" "><label for="signup-email">Email Address</label></div>
+                        <div class="form-group"><input type="password" id="signup-password" required placeholder=" "><label for="signup-password">Create Password</label></div>
+                        <button type="submit" class="btn btn-cta">Create Account</button>
+                    </form>
+                    <p class="auth-switch">Already have an account? <a href="#" id="show-login">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- SYMPTOM CHECKER MODAL -->
+    <div id="symptom-modal" class="modal-container hidden">
+        <button class="modal-close-btn">×</button>
+        <div id="symptom-checker-interactive">
+            <div class="symptom-step active" id="step-1">
+                <h2>Where are you feeling the discomfort?</h2>
+                <p>Select the area that best describes your primary symptom.</p>
+                <div class="category-grid">
+                    <div class="category-card" data-category="head"><div class="icon"></div><h3>Head & Neck</h3></div>
+                    <div class="category-card" data-category="chest"><div class="icon"></div><h3>Chest & Lungs</h3></div>
+                    <div class="category-card" data-category="general"><div class="icon"></div><h3>General & Body</h3></div>
+                </div>
+            </div>
+            <div class="symptom-step" id="step-2"></div>
+            <div class="symptom-step" id="step-3"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
